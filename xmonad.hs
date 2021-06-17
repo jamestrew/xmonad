@@ -165,8 +165,6 @@ tall     = renamed [Replace "tall"]
            $ limitWindows 12
            $ mySpacing 8
            $ ResizableTall 1 (3/100) (1/2) []
--- wide     = renamed [Replace "wide"]
---            $ Mirror tall
 wide     = Mirror tall
 monocle  = renamed [Replace "monocle"]
            $ smartBorders
@@ -181,6 +179,7 @@ threeCol = renamed [Replace "threeCol"]
            $ addTabs shrinkText myTabTheme
            $ subLayout [] (smartBorders Simplest)
            $ limitWindows 7
+           $ mySpacing 8
            $ ThreeCol 1 (3/100) (1/2)
 
 -- setting colors for tabs layout and tabs sublayout.
@@ -206,9 +205,9 @@ myShowWNameTheme = def
 myLayoutHook = avoidStruts $ mouseResize $ windowArrange $ T.toggleLayouts floats
                $ mkToggle (NBFULL ?? NOBORDERS ?? EOT) myDefaultLayout
              where
-               myDefaultLayout =     withBorder myBorderWidth tall
+               myDefaultLayout =     withBorder myBorderWidth threeCol
+                                 ||| tall
                                  ||| noBorders monocle
-                                 ||| threeCol
                                  ||| wide
 
 -- myWorkspaces = [" 1 ", " 2 ", " 3 ", " 4 ", " 5 ", " 6 ", " 7 ", " 8 ", " 9 "]

@@ -72,7 +72,7 @@ myModMask :: KeyMask
 myModMask = mod4Mask        -- Sets modkey to super/windows key
 
 myTerminal :: String
-myTerminal = "alacritty"    -- Sets default terminal
+myTerminal = "kitty"    -- Sets default terminal
 
 myBrowser :: String
 myBrowser = "brave"  -- Sets qutebrowser as browser
@@ -94,6 +94,7 @@ myStartupHook :: X ()
 myStartupHook = do
     --spawnOnce "lxsession &"
     spawnOnce "picom &"
+    spawnOnce "imwheel -b 45"
     --spawnOnce "nm-applet &"
     --spawnOnce "volumeicon &"
     --spawnOnce "conky -c $HOME/.config/conky/xmonad.conkyrc"

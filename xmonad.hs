@@ -103,8 +103,8 @@ myStartupHook = do
     --spawnOnce "xargs xwallpaper --stretch < ~/.xwallpaper"  -- set last saved with xwallpaper
     -- spawnOnce "/bin/ls ~/wallpapers | shuf -n 1 | xargs xwallpaper --stretch"  -- set random xwallpaper
     -- spawnOnce "~/.fehbg &"  -- set last saved feh wallpaper
-    -- spawnOnce "feh --randomize --bg-fill ~/wallpapers/*"  -- feh set random wallpaper
-    spawnOnce "nitrogen --restore &"   -- if you prefer nitrogen to feh
+    spawnOnce "feh --randomize --bg-fill ~/wallpapers/*"  -- feh set random wallpaper
+    -- spawnOnce "nitrogen --restore &"   -- if you prefer nitrogen to feh
     setWMName "LG3D"
 
 myColorizer :: Window -> Bool -> X (String, String)

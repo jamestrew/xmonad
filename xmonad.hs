@@ -230,7 +230,6 @@ myManageHook = composeAll
      , className =? "pinentry-gtk-2"  --> doFloat
      , className =? "splash"          --> doFloat
      , className =? "toolbar"         --> doFloat
-     , className =? "pcmanfm"         --> doFloat
      , title =? "Oracle VM VirtualBox Manager"  --> doFloat
      , className =? "Gimp"            --> doShift ( myWorkspaces !! 8 )
      , className =? "discord"         --> doShift ( myWorkspaces !! 6 )
@@ -317,26 +316,12 @@ myKeys =
         , ("C-s m", namedScratchpadAction myScratchPads "mocp")
         , ("C-s c", namedScratchpadAction myScratchPads "calculator")
 
-    -- Controls for mocp music player (SUPER-u followed by a key)
-        , ("M-u p", spawn "mocp --play")
-        , ("M-u l", spawn "mocp --next")
-        , ("M-u h", spawn "mocp --previous")
-        , ("M-u <Space>", spawn "mocp --toggle-pause")
-
-
     -- Multimedia Keys
-        , ("<XF86AudioPlay>", spawn (myTerminal ++ "mocp --play"))
-        , ("<XF86AudioPrev>", spawn (myTerminal ++ "mocp --previous"))
-        , ("<XF86AudioNext>", spawn (myTerminal ++ "mocp --next"))
         , ("<XF86AudioMute>", spawn "amixer set PCM toggle")
         , ("<XF86AudioLowerVolume>", spawn "amixer set PCM 5%- unmute")
         , ("<XF86AudioRaiseVolume>", spawn "amixer set PCM 5%+ unmute")
-        , ("<XF86HomePage>", spawn "qutebrowser https://www.youtube.com/c/DistroTube")
-        , ("<XF86Search>", spawn "dmsearch")
-        , ("<XF86Mail>", runOrRaise "thunderbird" (resource =? "thunderbird"))
         , ("<XF86Calculator>", runOrRaise "qalculate-gtk" (resource =? "qalculate-gtk"))
         , ("<XF86Eject>", spawn "toggleeject")
-        , ("<Print>", spawn "dmscrot")
         ]
     -- The following lines are needed for named scratchpads.
           where nonNSP          = WSIs (return (\ws -> W.tag ws /= "NSP"))

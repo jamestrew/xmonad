@@ -253,6 +253,7 @@ myKeys =
         , ("M-<Return>", spawn (myTerminal))
         , ("M-o b", spawn (myBrowser))
         , ("M-o d", spawn "discord")
+        , ("M-s s", spawn "flameshot gui")
 
     -- Kill windows
         , ("M-S-c", kill1)     -- Kill the currently focused client

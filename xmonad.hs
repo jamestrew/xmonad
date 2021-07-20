@@ -193,20 +193,12 @@ myTabTheme = def { fontName            = myFont
                  , inactiveTextColor   = "#d0d0d0"
                  }
 
--- Theme for showWName which prints current workspace when you change workspaces.
-myShowWNameTheme :: SWNConfig
-myShowWNameTheme = def
-    { swn_font              = "xft:Ubuntu:bold:size=60"
-    , swn_fade              = 1.0
-    , swn_bgcolor           = "#1c1f24"
-    , swn_color             = "#ffffff"
-    }
 
 -- The layout hook
 myLayoutHook = avoidStruts $ mouseResize $ windowArrange $ T.toggleLayouts floats
                $ mkToggle (NBFULL ?? NOBORDERS ?? EOT) myDefaultLayout
              where
-               myDefaultLayout =     withBorder myBorderWidth threeCol
+               myDefaultLayout = withBorder myBorderWidth threeCol
                                  ||| tall
                                  ||| noBorders monocle
                                  ||| wide

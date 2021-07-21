@@ -175,7 +175,7 @@ monocle  = renamed [Replace "monocle"]
 floats   = renamed [Replace "floats"]
            $ smartBorders
            $ limitWindows 20 simplestFloat
-threeCol = renamed [Replace "threeCol"]
+cols = renamed [Replace "cols"]
            $ smartBorders
            $ addTabs shrinkText myTabTheme
            $ subLayout [] (smartBorders Simplest)
@@ -198,7 +198,7 @@ myTabTheme = def { fontName            = myFont
 myLayoutHook = avoidStruts $ mouseResize $ windowArrange $ T.toggleLayouts floats
                $ mkToggle (NBFULL ?? NOBORDERS ?? EOT) myDefaultLayout
              where
-               myDefaultLayout = withBorder myBorderWidth threeCol
+               myDefaultLayout = withBorder myBorderWidth cols
                                  ||| tall
                                  ||| noBorders monocle
                                  ||| wide

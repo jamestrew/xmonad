@@ -198,7 +198,7 @@ myTabTheme = def { fontName            = myFont
 myLayoutHook = avoidStruts $ mouseResize $ windowArrange $ T.toggleLayouts floats
                $ mkToggle (NBFULL ?? NOBORDERS ?? EOT) myDefaultLayout
              where
-               myDefaultLayout = withBorder myBorderWidth cols
+               myDefaultLayout =     withBorder myBorderWidth cols
                                  ||| tall
                                  ||| noBorders monocle
                                  ||| wide

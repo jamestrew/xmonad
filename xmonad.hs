@@ -166,7 +166,12 @@ tall     = renamed [Replace "tall"]
            $ limitWindows 12
            $ mySpacing 8
            $ ResizableTall 1 (3/100) (1/2) []
-wide     = Mirror tall
+wide     = renamed [Replace "wide"]
+           $ smartBorders
+           $ addTabs shrinkText myTabTheme
+           $ subLayout [] (smartBorders Simplest)
+           $ mySpacing 8
+           $ Mirror tall
 monocle  = renamed [Replace "monocle"]
            $ smartBorders
            $ addTabs shrinkText myTabTheme
@@ -175,7 +180,7 @@ monocle  = renamed [Replace "monocle"]
 floats   = renamed [Replace "floats"]
            $ smartBorders
            $ limitWindows 20 simplestFloat
-cols = renamed [Replace "cols"]
+cols     = renamed [Replace "cols"]
            $ smartBorders
            $ addTabs shrinkText myTabTheme
            $ subLayout [] (smartBorders Simplest)
@@ -199,7 +204,6 @@ myLayoutHook = avoidStruts $ mouseResize $ windowArrange $ T.toggleLayouts float
                $ mkToggle (NBFULL ?? NOBORDERS ?? EOT) myDefaultLayout
              where
                myDefaultLayout =     withBorder myBorderWidth cols
-                                 ||| tall
                                  ||| noBorders monocle
                                  ||| wide
 
@@ -239,6 +243,7 @@ myKeys =
 
     -- Run Prompt
         , ("M-p", spawn "dmenu_run -i -p \"Run: \"") -- Dmenu
+        , ("M-o s", spawn "/bin/bash ~/.config/kitty/dmenu_session.sh")
 
 
     -- Useful programs to have a keybinding for launch

@@ -221,7 +221,6 @@ myManageHook = composeAll
      , className =? "dialog"          --> doFloat
      , className =? "download"        --> doFloat
      , className =? "error"           --> doFloat
-     , className =? "Gimp"            --> doFloat
      , className =? "notification"    --> doFloat
      , className =? "pinentry-gtk-2"  --> doFloat
      , className =? "splash"          --> doFloat

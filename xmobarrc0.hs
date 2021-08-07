@@ -24,6 +24,7 @@ Config { font    = "xft:Mononoki Nerd Font:pixelsize=15:antialias=true:hinting=t
 
 			, Run Date           "<fc=#EBCB8B>%a %b %_d %Y %H:%M:%S</fc>" "date" 10
             , Run Com "/home/jt/.xmonad/get-volume" [] "myvolume" 10
+            , Run Com "/bin/sh" ["/home/jt/.xmonad/music.sh"] "spotify" 10
 			, Run   WeatherX "CYTZ"--  https://en.wikipedia.org/wiki/List_of_airports_by_ICAO_code:_K#K_%E2%80%93_United_States
 			   [ ("clear", "望")
 			   , ("sunny", "")
@@ -40,10 +41,10 @@ Config { font    = "xft:Mononoki Nerd Font:pixelsize=15:antialias=true:hinting=t
 			   , "-L","10", "-H", "25", "--normal", "#646464"
 			   , "--high", "#EBCB8B", "--low", "#A3BE8C"]
 			   1800
-			, Run Com "/home/jt/.xmonad/trayer-padding-icon.sh" [] "trayerpad" 20
+			, Run Com "/home/jt/.xmonad/trayer-padding-icon.sh" [] "trayerpad" 5
 			, Run StdinReader
                     ]
        , sepChar = "%"
        , alignSep = "}{"
-       , template = "%StdinReader% }{ %CYTZ% | %cpu%| %memory% | 墳 %myvolume% | %date%%trayerpad%" 
+       , template = "%StdinReader% }{ %spotify%%CYTZ% | %cpu% | %memory% | 墳 %myvolume% | %date%%trayerpad%"
        }

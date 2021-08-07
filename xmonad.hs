@@ -227,6 +227,7 @@ myManageHook = composeAll
      , title =? "Oracle VM VirtualBox Manager"  --> doFloat
      , className =? "Gimp"            --> doShift ( myWorkspaces !! 8 )
      , className =? "discord"         --> doShift ( myWorkspaces !! 6 )
+     , className =? ""                --> doShift ( myWorkspaces !! 6 ) -- spotify
      , className =? "VirtualBox Manager" --> doShift  ( myWorkspaces !! 4 )
      , (className =? "brave-browser" <&&> resource =? "Dialog") --> doFloat  -- Float Firefox Dialog
      , isFullscreen -->  doFullFloat
@@ -235,19 +236,19 @@ myManageHook = composeAll
 myKeys :: [(String, X ())]
 myKeys =
     -- Xmonad
-        [ ("M-C-r", spawn "xmonad --recompile")  -- Recompiles xmonad
-        , ("M-S-r", spawn "xmonad --restart")    -- Restarts xmonad
+        [ ("M-S-r", spawn "xmonad --recompile && xmonad --restart")    -- Restarts xmonad
         , ("M-S-q", io exitSuccess)              -- Quits xmonad
 
     -- Run Prompt
         , ("M-p", spawn "dmenu_run -i -p \"Run: \"") -- Dmenu
-        , ("M-o s", spawn "/bin/bash ~/.config/kitty/dmenu_session.sh")
+        , ("M-o k", spawn "/bin/bash ~/.config/kitty/dmenu_session.sh")
 
 
     -- Useful programs to have a keybinding for launch
         , ("M-<Return>", spawn (myTerminal))
         , ("M-o b", spawn (myBrowser))
         , ("M-o d", spawn "discord")
+        , ("M-o s", spawn "spotify")
         , ("M-s s", spawn "flameshot gui")
 
     -- Kill windows
@@ -313,7 +314,9 @@ myKeys =
         , ("C-s c", namedScratchpadAction myScratchPads "calculator")
 
     -- Multimedia Keys
-        , ("<XF86AudioMute>", spawn "amixer set PCM toggle")
+        , ("<XF86AudioPrev>", spawn "playerctl previous")
+        , ("<XF86AudioNext>", spawn "playerctl next")
+        , ("<XF86AudioPlay>", spawn "playerctl play-pause")
         , ("<XF86AudioLowerVolume>", spawn "amixer set PCM 5%- unmute")
         , ("<XF86AudioRaiseVolume>", spawn "amixer set PCM 5%+ unmute")
         , ("<XF86Calculator>", runOrRaise "qalculate-gtk" (resource =? "qalculate-gtk"))
@@ -326,8 +329,8 @@ myKeys =
 main :: IO ()
 main = do
     -- Launching three instances of xmobar on their monitors.
-    xmproc0 <- spawnPipe "xmobar -x 0 $HOME/.xmonad/xmobarrc0"
-    xmproc1 <- spawnPipe "xmobar -x 1 $HOME/.xmonad/xmobarrc1"
+    xmproc0 <- spawnPipe "xmobar -x 0 $HOME/.xmonad/xmobarrc0.hs"
+    xmproc1 <- spawnPipe "xmobar -x 1 $HOME/.xmonad/xmobarrc1.hs"
     -- the xmonad, ya know...what the WM is named after!
     xmonad $ ewmh def
         { manageHook         = myManageHook <+> manageDocks

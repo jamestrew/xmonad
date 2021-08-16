@@ -38,8 +38,8 @@ Config { font    = "xft:Mononoki Nerd Font:pixelsize=15:antialias=true:hinting=t
 			   , ("mostly cloudy", "")
 			   , ("considerable cloudiness", "")]
 			   ["-t", "<skyConditionS> <tempC>糖  <rh>%  <windKmh>"
-			   , "-L","10", "-H", "25", "--normal", "#646464"
-			   , "--high", "#EBCB8B", "--low", "#A3BE8C"]
+			   , "-L","10", "-H", "25", "--normal", "#EBCB8B"
+			   , "--high", "#BF616A", "--low", "#A3BE8C"]
 			   1800
 			, Run Com "/home/jt/.xmonad/trayer-padding-icon.sh" [] "trayerpad" 5
 			, Run StdinReader

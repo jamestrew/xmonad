@@ -95,16 +95,9 @@ myStartupHook = do
     --spawnOnce "lxsession &"
     spawnOnce "picom &"
     spawnOnce "imwheel -b 45"
-    --spawnOnce "nm-applet &"
-    --spawnOnce "volumeicon &"
-    --spawnOnce "conky -c $HOME/.config/conky/xmonad.conkyrc"
+    spawnOnce "clipmenud &"
     spawnOnce "trayer --edge top --align right --widthtype request --padding 6 --SetDockType true --SetPartialStrut true --expand true --monitor 0 --transparent true --alpha 0 --tint 0x282c34  --height 24 &"
-
-    --spawnOnce "xargs xwallpaper --stretch < ~/.xwallpaper"  -- set last saved with xwallpaper
-    -- spawnOnce "/bin/ls ~/wallpapers | shuf -n 1 | xargs xwallpaper --stretch"  -- set random xwallpaper
-    -- spawnOnce "~/.fehbg &"  -- set last saved feh wallpaper
     spawnOnce "feh --randomize --bg-fill ~/Pictures/wallpapers/*"  -- feh set random wallpaper
-    -- spawnOnce "nitrogen --restore &"   -- if you prefer nitrogen to feh
     setWMName "LG3D"
 
 myColorizer :: Window -> Bool -> X (String, String)
@@ -227,6 +220,7 @@ myManageHook = composeAll
      , title =? "Oracle VM VirtualBox Manager"  --> doFloat
      , className =? "Gimp"            --> doShift ( myWorkspaces !! 8 )
      , className =? "discord"         --> doShift ( myWorkspaces !! 6 )
+     , className =? "Microsoft Teams - Preview"         --> doShift ( myWorkspaces !! 6 )
      , className =? ""                --> doShift ( myWorkspaces !! 6 ) -- spotify
      , className =? "VirtualBox Manager" --> doShift  ( myWorkspaces !! 4 )
      , (className =? "brave-browser" <&&> resource =? "Dialog") --> doFloat  -- Float Firefox Dialog

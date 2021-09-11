@@ -236,6 +236,7 @@ myKeys =
     -- Run Prompt
         , ("M-p", spawn "dmenu_run -i -p \"Run: \"") -- Dmenu
         , ("M-o k", spawn "/bin/bash ~/.config/kitty/dmenu_session.sh")
+        , ("M-v", spawn "clipmenu") -- Dmenu
 
 
     -- Useful programs to have a keybinding for launch
